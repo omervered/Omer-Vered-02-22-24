@@ -1,12 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 
+import AppHeaderComponent from "./components/app-header-component/app-header-component";
+
 import routes from "./routes";
 
-import AppHeaderComponent from "./components/app-header-component/app-header-component";
+import { GlobalStyles } from "./assets/golbal-styles";
 
 function App() {
   return (
     <>
+      <GlobalStyles />
       <AppHeaderComponent />
       <Routes>
         {routes.map((route, index) => (

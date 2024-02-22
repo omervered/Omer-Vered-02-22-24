@@ -1,12 +1,9 @@
 import * as Styles from "./app-header-component-styles";
-import WeatherImageComponent from "../../images/weather-header-image.png";
-import { NavLink } from "react-router-dom";
 
 export default function AppHeaderComponent() {
   return (
     <Styles.AppHeader>
       <Styles.AppHeaderWrapper>
-        <Styles.Image src={WeatherImageComponent} alt="Weather App" />
         <Styles.TitleWrapper>
           <Styles.Title>The Weather Frog</Styles.Title>
           <Styles.Subtitle>your trusted weather forecaster </Styles.Subtitle>
