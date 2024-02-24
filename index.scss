@@ -8,25 +8,11 @@ html {
     box-sizing: border-box;
   }
 
-  .main-layout {
-    display: grid;
-    grid-template-columns: 20px 1fr 20px;
-
-    > *.full {
-      grid-column: 1 / -1;
-    }
-
-    > *:not(.full) {
-      grid-column: 2;
-    }
-  }
-
   body {
     height: 100%;
     width: 100%;
     margin: 0;
     font-weight: 300;
-    overflow: hidden;
   }
 
   #app-container {

@@ -3,14 +3,6 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
 
-   body {
-    height: 100%;
-    width: 100%;
-    font-family: "Poppins", sans-serif;
-    background-color: #f9f9fb;
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
 
   h1{
     font-size: 1.8rem;
