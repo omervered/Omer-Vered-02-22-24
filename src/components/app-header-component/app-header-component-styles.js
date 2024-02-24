@@ -4,6 +4,7 @@ import { NavLink as RouterNavLink } from "react-router-dom";
 import colors from "../../constants/colors";
 
 export const AppHeader = styled.header`
+  width: 100%;
   display: flex;
   height: 80px;
   font-family: "Poppins", sans-serif;
@@ -28,21 +29,20 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-weight: 600;
+  font-weight: 500;
   color: ${colors["ghost-white"]};
   margin: 0;
 `;
 
 export const Subtitle = styled.h2`
   font-family: Caveat, cursive;
-  font-weight: 400;
+  font-weight: 300;
   color: ${colors["ghost-white"]};
   margin: 0;
 `;
 
 export const Nav = styled.nav`
   display: flex;
-  flex-shrink: 1;
   gap: 20px;
   align-items: center;
   overflow: hidden;
