@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "../../constants/colors";
 
-export const InputWrapper = styled.div`
+export const AutoCompleteWrapper = styled.div`
   width: auto;
   max-width: 450px;
   display: inline-block;
