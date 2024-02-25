@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
+import { setCityName } from "../../redux/actions/weather.action";
 import useConnectAutoCompleteComponent from "./use-connect-auto-complete-component-connector";
 
 import * as Styles from "./auto-complete-component-styles";
@@ -36,7 +37,8 @@ export default function AutoCompleteComponent(props) {
 
   const handleInputSelect = (event, value) => {
     if (!value) return;
-    const cityKey = value.key;
+    const cityKey = value.Key;
+    setCityName(value.LocalizedName);
     fetchCurrentWeather({ cityKey });
   };
 

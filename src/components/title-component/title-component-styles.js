@@ -11,22 +11,15 @@ export const TitleWrapper = styled.div`
 `;
 
 export const Title = styled.h1`
+  font-family: Caveat, cursive;
   font-weight: 500;
   margin: 0;
+  font-size: ${(props) => props.size};
 `;
 
 export const Subtitle = styled.h2`
   font-family: Caveat, cursive;
   font-weight: 300;
   margin: 0;
+  font-size: ${(props) => props.size};
 `;
-
-Title.defaultProps = {
-  color: colors["eerie-black"],
-  size: "2rem",
-};
-
-Subtitle.defaultProps = {
-  color: colors["eerie-black"],
-  size: "1.5rem",
-};

@@ -1,6 +1,8 @@
 import { getWeather } from "../../redux/actions/weather.action";
 import HttpService from "../../services/http-service";
 
+import { useDispatch } from "react-redux";
+
 const API_KEY = "3hcZAkNEp7h4rU8Yto1YI2nns2FE4jUI";
 
 export default function useConnectAutoCompleteComponent() {
