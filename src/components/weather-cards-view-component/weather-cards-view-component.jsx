@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import TitleComponent from "../title-component/title-component";
 
@@ -12,6 +12,8 @@ import WeatherCardViewComponent from "../weather-card-view-component/weather-car
 
 export default function WeatherCardsViewComponent(props) {
   const { currentWeather, fullWeather } = props;
+
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const { currentCity } = useConnectCardsViewConnector();
 
@@ -36,6 +38,11 @@ export default function WeatherCardsViewComponent(props) {
   const getSubtitle = () => {
     return `${WeatherText}, ${Temperature.Metric.Value}°C`;
   };
+
+  const handleFavouriteClick = () => {
+    setIsFavourite(!isFavourite);
+  };
+
   const renderCurrentDayCard = () => {
     return (
       <Styles.HeaderWrapper>
@@ -44,7 +51,7 @@ export default function WeatherCardsViewComponent(props) {
         </Styles.IconWrapper>
         <TitleComponent title={currentCity} titleSize="5rem" subtitle={getSubtitle()} />
         <Styles.FavouriteWrapper>
-          <FavouriteButtonComponent />
+          <FavouriteButtonComponent onClick={handleFavouriteClick} isFavourite={isFavourite} />
         </Styles.FavouriteWrapper>
       </Styles.HeaderWrapper>
     );

@@ -21,9 +21,11 @@ export default function WeatherCardViewComponent(props) {
         <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
           {getWeekday({ timestamp: Date })}
         </Typography>
-        <Typography variant="h5" component="div">
-          {Temperature.Maximum.Value}°C / {Temperature.Minimum.Value}°C
-        </Typography>
+        <Styles.TempWrapper>
+          <Typography variant="h5" component="div">
+            {Temperature.Maximum.Value}°C - {Temperature.Minimum.Value}°C
+          </Typography>
+        </Styles.TempWrapper>
         <Styles.IconWrapper>
           <Styles.Icon src={`src/icons/${Day.Icon}.png`} alt="Weather Icon" />
           <Typography variant="body2">{Day.IconPhrase.split(" ").slice(0, 2).join(" ")}</Typography>

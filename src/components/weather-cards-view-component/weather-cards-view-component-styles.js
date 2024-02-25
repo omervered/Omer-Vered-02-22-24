@@ -29,7 +29,7 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
 `;

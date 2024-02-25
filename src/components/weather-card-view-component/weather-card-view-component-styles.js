@@ -9,6 +9,14 @@ export const CardWrapper = styled.div`
   justify-content: space-between;
 `;
 
+export const TempWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+`;
+
 export const IconWrapper = styled.div`
   width: 130px;
   height: 80px;
@@ -18,7 +26,6 @@ export const IconWrapper = styled.div`
   justify-content: space-between;
   flex-direction: column;
   padding: 2px;
-  margin: 10px;
   gap: 5px;
 
   @media (max-width: 768px) {
