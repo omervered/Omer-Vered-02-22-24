@@ -1,9 +1,7 @@
-import { getWeather } from "../../redux/actions/weather.action";
+import { getFullWeather, getWeather } from "../../redux/actions/weather.action";
 import HttpService from "../../services/http-service";
 
-import { useDispatch } from "react-redux";
-
-const API_KEY = "3hcZAkNEp7h4rU8Yto1YI2nns2FE4jUI";
+const API_KEY = "GbouZoRmjGkIOk6VgGTYAlFOIMrLp8eA";
 
 export default function useConnectAutoCompleteComponent() {
   const fetchCityAutoComplete = async ({ searchString }) => {
@@ -28,5 +26,14 @@ export default function useConnectAutoCompleteComponent() {
     }
   };
 
-  return { fetchCityAutoComplete, fetchCurrentWeather };
+  const fetchFullWeatherForecast = async ({ cityKey }) => {
+    try {
+      await getFullWeather({ cityKey });
+    } catch (error) {
+      console.error("Error fetching full weather forecast:", error);
+      throw error;
+    }
+  };
+
+  return { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast };
 }
