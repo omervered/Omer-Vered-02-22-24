@@ -1,17 +1,18 @@
 import * as Styles from "./title-component-styles";
 
 export default function TitleComponent(props) {
-  const { title, subtitle, size } = props;
+  const { title, subtitle, titleSize, subtitleSize } = props;
   return (
     <Styles.TitleWrapper>
-      <Styles.Title size={size}>{title}</Styles.Title>
-      {subtitle && <Styles.Subtitle>{subtitle}</Styles.Subtitle>}
+      <Styles.Title titleSize={titleSize}>{title}</Styles.Title>
+      {subtitle && <Styles.Subtitle subtitleSize={subtitleSize}>{subtitle}</Styles.Subtitle>}
     </Styles.TitleWrapper>
   );
 }
 
 TitleComponent.defaultProps = {
-  size: "2rem",
   title: "",
+  titleSize: "2rem",
   subtitle: "",
+  subtitleSize: "1.5rem",
 };

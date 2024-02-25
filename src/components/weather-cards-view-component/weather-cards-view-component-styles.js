@@ -13,6 +13,15 @@ export const CurrentDayCardWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  background-color: aqua;
+`;
+
+export const CardViewWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: lightblue;
 `;
 
 export const HeaderWrapper = styled.div`

@@ -13,7 +13,7 @@ import * as Styles from "./auto-complete-component-styles";
 export default function AutoCompleteComponent(props) {
   const { label, placeholder } = props;
 
-  const { fetchCityAutoComplete, fetchCurrentWeather } = useConnectAutoCompleteComponent();
+  const { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast } = useConnectAutoCompleteComponent();
 
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
@@ -35,11 +35,16 @@ export default function AutoCompleteComponent(props) {
     setOptions(response);
   };
 
-  const handleInputSelect = (event, value) => {
+  const handleInputSelect = async (event, value) => {
     if (!value) return;
-    const cityKey = value.Key;
-    setCityName(value.LocalizedName);
-    fetchCurrentWeather({ cityKey });
+    try {
+      const cityKey = value.Key;
+      setCityName(value.LocalizedName);
+      await fetchCurrentWeather({ cityKey });
+      await fetchFullWeatherForecast({ cityKey });
+    } catch (error) {
+      console.error("Error in handleInputSelect:", error);
+    }
   };
 
   const renderAutoComplete = () => {
@@ -58,7 +63,7 @@ export default function AutoCompleteComponent(props) {
           setOptions([]);
         }}
         onChange={handleInputSelect}
-        isOptionEqualToValue={(option, value) => option.name === value.name}
+        isOptionEqualToValue={(option, value) => option.Key === value.Key}
         getOptionLabel={(option) => option.LocalizedName}
         options={options}
         loading={isLoading}
