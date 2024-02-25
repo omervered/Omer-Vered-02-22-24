@@ -5,8 +5,6 @@ const initialState = {
 };
 
 export function weatherReducer(state = initialState, action = {}) {
-  let shownWeather;
-
   switch (action.type) {
     case SET_WEATHER:
       return { ...state, shownWeather: action.payload };
