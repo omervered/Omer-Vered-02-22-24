@@ -11,7 +11,7 @@ import FavouriteButtonComponent from "../favourite-button-component/favourite-bu
 import WeatherCardViewComponent from "../weather-card-view-component/weather-card-view-component";
 
 export default function WeatherCardsViewComponent(props) {
-  const { currentWeather } = props;
+  const { currentWeather, fullWeather } = props;
 
   const { currentCity } = useConnectCardsViewConnector();
 
@@ -50,12 +50,16 @@ export default function WeatherCardsViewComponent(props) {
     );
   };
 
+  const renderFullWeatherForecast = () => {
+    return fullWeather.map((day, index) => {
+      return <WeatherCardViewComponent key={index} day={day} />;
+    });
+  };
+
   return (
     <Styles.WeatherCardsViewWrapper>
       <Styles.CurrentDayCardWrapper>{renderCurrentDayCard()}</Styles.CurrentDayCardWrapper>
-      <Styles.CardViewWrapper>
-        <WeatherCardViewComponent />
-      </Styles.CardViewWrapper>
+      <Styles.CardViewWrapper>{renderFullWeatherForecast()}</Styles.CardViewWrapper>
     </Styles.WeatherCardsViewWrapper>
   );
 }

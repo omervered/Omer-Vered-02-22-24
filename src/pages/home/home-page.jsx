@@ -15,7 +15,7 @@ export default function HomePage() {
       <AutoCompleteComponent label={"City Name"} placeholder={"Start typing your desired location..."} />
       <Styles.HomePageContainer>
         {currentWeather && fullWeather ? (
-          <WeatherCardsViewComponent currentWeather={currentWeather} />
+          <WeatherCardsViewComponent currentWeather={currentWeather} fullWeather={fullWeather} />
         ) : (
           <div> loading...</div>
         )}

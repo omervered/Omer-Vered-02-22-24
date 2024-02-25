@@ -13,6 +13,7 @@ function getWeather({ cityKey }) {
 function getFullWeather({ cityKey }) {
   return HttpService.get(`${FIVE_DAY_FORECAST_BASE_URL}/${cityKey}`, {
     apikey: "GbouZoRmjGkIOk6VgGTYAlFOIMrLp8eA",
+    metric: true,
   });
 }
 

@@ -5,31 +5,36 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import { getWeekday } from "../../utils/utils";
+
+import * as Styles from "./weather-card-view-component-styles";
+
 export default function WeatherCardViewComponent(props) {
+  const { day } = props;
+  const { Date, Day, Night, Temperature, MobileLink, Link } = day;
+
   const bull = <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}></Box>;
 
   const card = (
-    <>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Word of the Day
+    <Styles.CardWrapper>
+      <CardContent style={{ minHeight: "250px" }}>
+        <Typography sx={{ fontSize: 16 }} color="text.secondary" gutterBottom>
+          {getWeekday({ timestamp: Date })}
         </Typography>
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
+          {Temperature.Maximum.Value}°C / {Temperature.Minimum.Value}°C
         </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
-        </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        <Styles.IconWrapper>
+          <Styles.Icon src={`src/icons/${Day.Icon}.png`} alt="Weather Icon" />
+          <Typography variant="body2">{Day.IconPhrase.split(" ").slice(0, 2).join(" ")}</Typography>
+          <Styles.Icon src={`src/icons/${Night.Icon}.png`} alt="Weather Icon" />
+          <Typography variant="body2">{Night.IconPhrase}</Typography>
+        </Styles.IconWrapper>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small">Get full info</Button>
       </CardActions>
-    </>
+    </Styles.CardWrapper>
   );
 
   return (

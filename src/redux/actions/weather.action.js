@@ -16,7 +16,6 @@ export async function getWeather({ cityKey }) {
 export async function getFullWeather({ cityKey }) {
   try {
     const response = await weatherService.getFullWeather({ cityKey });
-
     store.dispatch({ type: SET_FULL_WEATHER, payload: response.data.DailyForecasts });
   } catch (error) {
     console.error("Error fetching full weather forecast:", error);

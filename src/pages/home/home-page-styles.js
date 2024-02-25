@@ -11,7 +11,7 @@ export const HomePage = styled.div`
 
 export const HomePageContainer = styled.div`
   width: 100%;
-  max-width: 800px;
+  max-width: 1200px;
   height: 700px;
   display: flex;
   flex-direction: column;
