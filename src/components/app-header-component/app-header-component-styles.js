@@ -11,7 +11,6 @@ export const AppHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 30px;
-  /* background-color: ${colors["jordy-blue"]}; */
   background-color: ${(props) => props.theme.headerBackground};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;

@@ -1,15 +1,22 @@
 import Switch from "@mui/material/Switch";
 import { FormControlLabel } from "@mui/material";
 
-import * as Styles from "./app-header-component-styles";
 import { setTheme } from "../../redux/actions/theme.action";
+import { setIsMetric } from "../../redux/actions/weather.action";
+
 import { useAppHeaderConnector } from "./use-app-header-connector";
 
+import * as Styles from "./app-header-component-styles";
+
 export default function AppHeaderComponent() {
-  const { isDarkMode } = useAppHeaderConnector();
+  const { isDarkMode, isMetric } = useAppHeaderConnector();
 
   const toggleDarkMode = () => {
     setTheme(!isDarkMode);
+  };
+
+  const toggleMetric = () => {
+    setIsMetric(!isMetric);
   };
 
   return (
@@ -27,6 +34,11 @@ export default function AppHeaderComponent() {
         <FormControlLabel
           control={<Switch checked={isDarkMode} onChange={toggleDarkMode} />}
           label={isDarkMode ? "🌒" : "☀️"}
+          inputProps={{ "aria-label": "controlled" }}
+        />
+        <FormControlLabel
+          control={<Switch checked={isMetric} onChange={toggleMetric} />}
+          label={isMetric ? "C" : "F"}
           inputProps={{ "aria-label": "controlled" }}
         />
       </Styles.Nav>

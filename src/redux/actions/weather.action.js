@@ -6,6 +6,7 @@ import {
   SET_FULL_WEATHER,
   SET_WEATHER,
   SET_GEOLOCATION,
+  SET_IS_METRIC,
 } from "../reducers/weather.reducer";
 
 import { weatherService } from "../../services/weather.service";
@@ -59,6 +60,10 @@ export async function getGeolocation() {
       console.error("Geolocation error:", error);
     }
   );
+}
+
+export function setIsMetric(isMetric) {
+  store.dispatch({ type: SET_IS_METRIC, payload: isMetric });
 }
 
 export function setCityName(cityName) {

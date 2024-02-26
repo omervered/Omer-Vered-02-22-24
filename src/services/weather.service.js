@@ -4,7 +4,7 @@ import { localStorageService } from "./local-storage";
 const CURR_WEATHER_BASE_URL = "http://dataservice.accuweather.com/currentconditions/v1";
 const FIVE_DAY_FORECAST_BASE_URL = "http://dataservice.accuweather.com/forecasts/v1/daily/5day";
 
-const API_KEY = "bPaezHAnKBQRSmfxbCdNiYk9bc8Xa4HE";
+const API_KEY = "yZzcZcY0zR57JQIKTUxt8ZdaYgdmUIQ6";
 
 const STORAGE_KEY = "weatherDB";
 

@@ -27,7 +27,9 @@ export default function WeatherCardViewComponent(props) {
         </Typography>
         <Styles.TempWrapper>
           <Typography variant="h5" component="div">
-            {Math.round(Temperature.Maximum.Value)}°C - {Math.round(Temperature.Minimum.Value)}°C
+            {Math.round(Temperature.Maximum.Value)}
+            {`°${Temperature.Maximum.Unit}`} - {Math.round(Temperature.Minimum.Value)}
+            {`°${Temperature.Minimum.Unit}`}
           </Typography>
         </Styles.TempWrapper>
         <Styles.IconWrapper>

@@ -9,19 +9,21 @@ import useConnectCardsViewConnector from "./use-connect-cards-view-connector";
 import { weatherService } from "../../services/weather.service";
 
 import * as Styles from "./weather-cards-view-component-styles";
+import { getFullWeather } from "../../redux/actions/weather.action";
 
 export default function WeatherCardsViewComponent(props) {
   const { currentWeather, fullWeather } = props;
 
   const [isFavourite, setIsFavourite] = useState(false);
 
-  const { currentCityName, currentCityKey } = useConnectCardsViewConnector();
+  const { currentCityName, currentCityKey, isMetric } = useConnectCardsViewConnector();
 
   const { LocalObservationDateTime: timestamp, WeatherText, WeatherIcon, Temperature } = currentWeather;
 
   useEffect(() => {
+    getFullWeather({ cityKey: currentCityKey, metric: isMetric });
     setIsFavourite(weatherService.isCityInFavorites({ cityKey: currentCityKey }));
-  }, [currentCityKey]);
+  }, [currentCityKey, isMetric]);
 
   const getIconPath = () => {
     const iconUrl = `src/icons/${WeatherIcon}.png`;
@@ -29,7 +31,8 @@ export default function WeatherCardsViewComponent(props) {
   };
 
   const getSubtitle = () => {
-    return `${WeatherText}, ${Temperature.Metric.Value}°C`;
+    const isMetricText = isMetric ? "Metric" : "Imperial";
+    return `${WeatherText} | ${Temperature[isMetricText].Value} ${Temperature[isMetricText].Unit}`;
   };
 
   const handleIsFavouriteClick = () => {
@@ -55,7 +58,14 @@ export default function WeatherCardsViewComponent(props) {
 
   const renderFullWeatherForecast = () => {
     return fullWeather.map((day, index) => {
-      return <WeatherCardViewComponent key={index} day={day} />;
+      return (
+        <WeatherCardViewComponent
+          key={index}
+          day={day}
+          isMetric={isMetric}
+          temp={isMetric ? Temperature.Metric : Temperature.Imperial}
+        />
+      );
     });
   };
 

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getFullWeather, getWeather } from "../../redux/actions/weather.action";
 import HttpService from "../../services/http-service";
 
-const API_KEY = "bPaezHAnKBQRSmfxbCdNiYk9bc8Xa4HE";
+const API_KEY = "yZzcZcY0zR57JQIKTUxt8ZdaYgdmUIQ6";
 
 export default function useConnectAutoCompleteConnector() {
   const fetchCityAutoComplete = async ({ searchString }) => {
@@ -39,5 +39,7 @@ export default function useConnectAutoCompleteConnector() {
 
   const currentCityKey = useSelector((storeState) => storeState.weatherModule.cityKey);
 
-  return { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey };
+  const isMetric = useSelector((storeState) => storeState.weatherModule.isMetric);
+
+  return { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey, isMetric };
 }
