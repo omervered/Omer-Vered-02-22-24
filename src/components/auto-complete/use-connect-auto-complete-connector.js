@@ -8,7 +8,7 @@ const API_KEY = "yZzcZcY0zR57JQIKTUxt8ZdaYgdmUIQ6";
 export default function useConnectAutoCompleteConnector() {
   const fetchCityAutoComplete = async ({ searchString }) => {
     try {
-      const response = await HttpService.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete`, {
+      const response = await HttpService.get(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete`, {
         apikey: API_KEY,
         q: searchString,
       });
