@@ -5,7 +5,7 @@ const CURR_WEATHER_BASE_URL = "https://dataservice.accuweather.com/currentcondit
 const FIVE_DAY_FORECAST_BASE_URL = "https://dataservice.accuweather.com/forecasts/v1/daily/5day";
 const GEO_POSITION_BASE_URL = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
 
-const API_KEY = "mP1803Ni4cHG3oE2RzXn4W7tfari33hS";
+const API_KEY = "CvUaLelSzvOKmTG0jJLS2rA8tgBjs5di";
 
 const STORAGE_KEY = "weatherDB";
 

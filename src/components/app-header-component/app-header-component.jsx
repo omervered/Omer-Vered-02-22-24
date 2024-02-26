@@ -7,16 +7,19 @@ import { setIsMetric } from "../../redux/actions/weather.action";
 import { useAppHeaderConnector } from "./use-app-header-connector";
 
 import * as Styles from "./app-header-component-styles";
+import { showSuccessMsg } from "../../services/event-bus.service";
 
 export default function AppHeaderComponent() {
   const { isDarkMode, isMetric } = useAppHeaderConnector();
 
   const toggleDarkMode = () => {
     setTheme(!isDarkMode);
+    showSuccessMsg(`Switched to ${isDarkMode ? "Light" : "Dark"} mode!`);
   };
 
   const toggleMetric = () => {
     setIsMetric(!isMetric);
+    showSuccessMsg(`Switched to ${isMetric ? "Imperial" : "Metric"} units!`);
   };
 
   return (
