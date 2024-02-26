@@ -25,11 +25,6 @@ export default function WeatherCardsViewComponent(props) {
     setIsFavourite(weatherService.isCityInFavorites({ cityKey: currentCityKey }));
   }, [currentCityKey, isMetric]);
 
-  const getIconPath = () => {
-    const iconUrl = `src/icons/${WeatherIcon}.png`;
-    return iconUrl;
-  };
-
   const getSubtitle = () => {
     const isMetricText = isMetric ? "Metric" : "Imperial";
     return `${WeatherText} | ${Temperature[isMetricText].Value} ${Temperature[isMetricText].Unit}`;
