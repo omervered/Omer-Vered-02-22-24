@@ -10,7 +10,6 @@ export default function FavouriteCardViewComponent(props) {
   const { cityName } = weather;
 
   const { Temperature, WeatherText, WeatherIcon } = weather.data[0];
-  console.log("Temperature:", Temperature);
 
   return (
     <Styles.cardWrapper>
