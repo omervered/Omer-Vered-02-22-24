@@ -1,8 +1,9 @@
 import HttpService from "./http-service";
 import { localStorageService } from "./local-storage";
 
-const CURR_WEATHER_BASE_URL = "http://dataservice.accuweather.com/currentconditions/v1";
-const FIVE_DAY_FORECAST_BASE_URL = "http://dataservice.accuweather.com/forecasts/v1/daily/5day";
+const CURR_WEATHER_BASE_URL = "https://dataservice.accuweather.com/currentconditions/v1";
+const FIVE_DAY_FORECAST_BASE_URL = "https://dataservice.accuweather.com/forecasts/v1/daily/5day";
+const GEO_POSITION_BASE_URL = "https://dataservice.accuweather.com/locations/v1/cities/geoposition/search";
 
 const API_KEY = "yZzcZcY0zR57JQIKTUxt8ZdaYgdmUIQ6";
 
@@ -40,7 +41,7 @@ function isCityInFavorites({ cityKey }) {
 }
 
 function getGeolocation(latitude, longitude) {
-  return HttpService.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search", {
+  return HttpService.get(GEO_POSITION_BASE_URL, {
     apikey: API_KEY,
     q: `${latitude},${longitude}`,
   });
