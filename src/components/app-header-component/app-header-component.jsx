@@ -1,4 +1,3 @@
-import { useDispatch, useSelector } from "react-redux";
 import Switch from "@mui/material/Switch";
 import { FormControlLabel } from "@mui/material";
 
@@ -9,7 +8,7 @@ import { useAppHeaderConnector } from "./use-app-header-connector";
 export default function AppHeaderComponent() {
   const { isDarkMode } = useAppHeaderConnector();
 
-  const onChange = () => {
+  const toggleDarkMode = () => {
     setTheme(!isDarkMode);
   };
 
@@ -26,7 +25,7 @@ export default function AppHeaderComponent() {
         <Styles.NavLink to="/">Home</Styles.NavLink>
         <Styles.NavLink to="/fav">Favourites</Styles.NavLink>
         <FormControlLabel
-          control={<Switch checked={isDarkMode} onChange={onChange} />}
+          control={<Switch checked={isDarkMode} onChange={toggleDarkMode} />}
           label={isDarkMode ? "🌒" : "☀️"}
           inputProps={{ "aria-label": "controlled" }}
         />
