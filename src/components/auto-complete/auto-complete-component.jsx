@@ -5,15 +5,16 @@ import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 
-import { setCityName } from "../../redux/actions/weather.action";
-import useConnectAutoCompleteComponent from "./use-connect-auto-complete-component-connector";
+import { setCityKey, setCityName } from "../../redux/actions/weather.action";
+import useConnectAutoCompleteConnector from "./use-connect-auto-complete-connector";
 
 import * as Styles from "./auto-complete-component-styles";
 
 export default function AutoCompleteComponent(props) {
   const { label, placeholder } = props;
 
-  const { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast } = useConnectAutoCompleteComponent();
+  const { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey } =
+    useConnectAutoCompleteConnector();
 
   const [isOpen, setIsOpen] = useState(false);
   const [options, setOptions] = useState([]);
@@ -39,6 +40,7 @@ export default function AutoCompleteComponent(props) {
     if (!value) return;
     try {
       const cityKey = value.Key;
+      setCityKey(cityKey);
       setCityName(value.LocalizedName);
       await fetchCurrentWeather({ cityKey });
       await fetchFullWeatherForecast({ cityKey, metric: "true" });

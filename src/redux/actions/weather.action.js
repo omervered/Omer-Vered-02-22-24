@@ -1,5 +1,11 @@
 import { store } from "../store";
-import { SET_CITY_NAME, SET_FULL_WEATHER, SET_WEATHER } from "../reducers/weather.reducer";
+import {
+  REMOVE_CITY_KEY,
+  SET_CITY_KEY,
+  SET_CITY_NAME,
+  SET_FULL_WEATHER,
+  SET_WEATHER,
+} from "../reducers/weather.reducer";
 
 import { weatherService } from "../../services/weather.service";
 
@@ -25,4 +31,12 @@ export async function getFullWeather({ cityKey, metric }) {
 
 export function setCityName(cityName) {
   store.dispatch({ type: SET_CITY_NAME, payload: cityName });
+}
+
+export function setCityKey(cityKey) {
+  store.dispatch({ type: SET_CITY_KEY, payload: cityKey });
+}
+
+export function removeCityKey() {
+  store.dispatch({ type: REMOVE_CITY_KEY });
 }
