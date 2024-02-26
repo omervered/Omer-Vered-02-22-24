@@ -41,7 +41,7 @@ export default function WeatherCardsViewComponent(props) {
     return (
       <Styles.HeaderWrapper>
         <Styles.IconWrapper>
-          <Styles.Icon src={`public/icons/${WeatherIcon}.png`} alt="Weather Icon" />
+          <Styles.Icon src={`/icons/${WeatherIcon}.png`} alt="Weather Icon" />
         </Styles.IconWrapper>
         <TitleComponent title={currentCityName} titleSize="5rem" subtitle={getSubtitle()} />
         <Styles.FavouriteWrapper>

@@ -19,7 +19,7 @@ export default function FavouriteCardViewComponent(props) {
       <Styles.InfoWrapper>
         <TitleComponent title={WeatherText} titleSize={"1rem"} />
         <Styles.IconWrapper>
-          <Styles.Icon src={`public/icons/${WeatherIcon}.png`} />
+          <Styles.Icon src={`/icons/${WeatherIcon}.png`} />
         </Styles.IconWrapper>
         <TitleComponent
           title={

@@ -33,9 +33,9 @@ export default function WeatherCardViewComponent(props) {
           </Typography>
         </Styles.TempWrapper>
         <Styles.IconWrapper>
-          <Styles.Icon src={`public/icons/${Day.Icon}.png`} alt="Weather Icon" />
+          <Styles.Icon src={`/icons/${Day.Icon}.png`} alt="Weather Icon" />
           <Typography variant="body2">{Day.IconPhrase.split(" ").slice(0, 2).join(" ")}</Typography>
-          <Styles.Icon src={`public/icons/${Night.Icon}.png`} alt="Weather Icon" />
+          <Styles.Icon src={`/icons/${Night.Icon}.png`} alt="Weather Icon" />
           <Typography variant="body2">{Night.IconPhrase}</Typography>
         </Styles.IconWrapper>
       </CardContent>
