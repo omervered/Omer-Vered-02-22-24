@@ -28,7 +28,7 @@ export default function WeatherCardsViewComponent(props) {
 
   const getSubtitle = () => {
     const isMetricText = isMetric ? "Metric" : "Imperial";
-    return `${WeatherText} | ${Temperature[isMetricText].Value} ${Temperature[isMetricText].Unit}`;
+    return `${WeatherText} | ${Temperature[isMetricText].Value} °${Temperature[isMetricText].Unit}`;
   };
 
   const handleIsFavouriteClick = () => {
