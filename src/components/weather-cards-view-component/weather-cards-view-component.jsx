@@ -35,7 +35,7 @@ export default function WeatherCardsViewComponent(props) {
   const handleIsFavouriteClick = () => {
     isFavourite
       ? weatherService.removeFromFavorites({ cityKey: currentCityKey })
-      : weatherService.addToFavorites({ cityKey: currentCityKey });
+      : weatherService.addToFavorites({ cityKey: currentCityKey, cityName: currentCityName });
     setIsFavourite(!isFavourite);
   };
 

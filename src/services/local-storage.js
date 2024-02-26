@@ -2,7 +2,6 @@ export const localStorageService = {
   query,
   get,
   post,
-  put,
   remove,
 };
 
@@ -18,20 +17,25 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity) {
-  _save(entityType, newEntity);
+  var entities = query(entityType);
+
+  entities.push(newEntity);
+  _save(entityType, entities);
+
   return newEntity;
 }
 
-function remove(entityType, entityId) {
+function remove(entityType, cityKey) {
   var entities = query(entityType);
 
-  var idx = entities.indexOf(entityId);
-  if (idx < 0) {
-    throw new Error(`Deletion failed, cannot find entity with id: ${entityId} in: ${entityType}`);
-  }
+  var idx = entities.findIndex((entity) => entity.cityKey === cityKey);
+  if (idx !== -1) {
+    entities.splice(idx, 1);
 
-  entities.splice(idx, 1);
-  _save(entityType, entities);
+    _save(entityType, entities);
+  } else {
+    throw new Error(`Deletion failed, cannot find entity with cityKey: ${cityKey} in: ${entityType}`);
+  }
 }
 
 function _save(entityType, entities) {

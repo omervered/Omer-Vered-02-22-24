@@ -9,23 +9,23 @@ const STORAGE_KEY = "weatherDB";
 function getWeather({ cityKey }) {
   const url = `${CURR_WEATHER_BASE_URL}/${cityKey}`;
   return HttpService.get(`${CURR_WEATHER_BASE_URL}/${cityKey}`, {
-    apikey: "Kl7aARxfBSfbw2M9PUqjnAy3zFb1SpBb",
+    apikey: "4F5aERCEIyBnEAXBGRsl9L7T8GPTTyJs",
   });
 }
 
 function getFullWeather({ cityKey, metric }) {
   return HttpService.get(`${FIVE_DAY_FORECAST_BASE_URL}/${cityKey}`, {
-    apikey: "Kl7aARxfBSfbw2M9PUqjnAy3zFb1SpBb",
+    apikey: "4F5aERCEIyBnEAXBGRsl9L7T8GPTTyJs",
     metric,
   });
 }
 
-function addToFavorites({ cityKey }) {
-  const cities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  if (!cities.includes(cityKey)) {
-    cities.push(cityKey);
-    localStorageService.post(STORAGE_KEY, cities);
-  }
+function loadFavorites() {
+  return localStorageService.query(STORAGE_KEY);
+}
+
+function addToFavorites({ cityKey, cityName }) {
+  return localStorageService.post(STORAGE_KEY, { cityKey, cityName });
 }
 
 function removeFromFavorites({ cityKey }) {
@@ -34,8 +34,7 @@ function removeFromFavorites({ cityKey }) {
 
 function isCityInFavorites({ cityKey }) {
   const cities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  const isCityInFavorites = cities.includes(cityKey);
-  return isCityInFavorites;
+  return cities.some((city) => city.cityKey === cityKey);
 }
 
 export const weatherService = {
@@ -44,4 +43,5 @@ export const weatherService = {
   addToFavorites,
   removeFromFavorites,
   isCityInFavorites,
+  loadFavorites,
 };
