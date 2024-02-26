@@ -3,12 +3,14 @@ export const SET_CITY_NAME = "SET_CITY_NAME";
 export const SET_FULL_WEATHER = "SET_FULL_WEATHER";
 export const SET_CITY_KEY = "SET_CITY_KEY";
 export const REMOVE_CITY_KEY = "REMOVE_CITY_KEY";
+export const SET_GEOLOCATION = "SET_GEOLOCATION";
 
 const initialState = {
   currentWeather: null,
   cityName: "",
   fullWeather: [],
   cityKey: null,
+  geolocation: null,
 };
 
 export function weatherReducer(state = initialState, action = {}) {
@@ -27,6 +29,9 @@ export function weatherReducer(state = initialState, action = {}) {
 
     case REMOVE_CITY_KEY:
       return { ...state, cityKey: null };
+
+    case SET_GEOLOCATION:
+      return { ...state, geolocation: action.payload };
 
     default:
       return state;

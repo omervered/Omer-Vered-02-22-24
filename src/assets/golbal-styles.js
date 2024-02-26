@@ -3,6 +3,9 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyles = createGlobalStyle`
 
 
+  body {
+    //to do add dark mode
+  }
 
   h1{
     font-size: 1.8rem;

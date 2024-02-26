@@ -1,6 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
+import Switch from "@mui/material/Switch";
+import { FormControlLabel } from "@mui/material";
+
 import * as Styles from "./app-header-component-styles";
+import { setTheme } from "../../redux/actions/theme.action";
+import { useAppHeaderConnector } from "./use-app-header-connector";
 
 export default function AppHeaderComponent() {
+  const { isDarkMode } = useAppHeaderConnector();
+
+  const onChange = () => {
+    setTheme(!isDarkMode);
+  };
+
   return (
     <Styles.AppHeader>
       <Styles.AppHeaderWrapper>
@@ -9,9 +21,15 @@ export default function AppHeaderComponent() {
           <Styles.Subtitle>your trusted weather forecaster </Styles.Subtitle>
         </Styles.TitleWrapper>
       </Styles.AppHeaderWrapper>
+
       <Styles.Nav>
         <Styles.NavLink to="/">Home</Styles.NavLink>
         <Styles.NavLink to="/fav">Favourites</Styles.NavLink>
+        <FormControlLabel
+          control={<Switch checked={isDarkMode} onChange={onChange} />}
+          label={isDarkMode ? "🌒" : "☀️"}
+          inputProps={{ "aria-label": "controlled" }}
+        />
       </Styles.Nav>
     </Styles.AppHeader>
   );

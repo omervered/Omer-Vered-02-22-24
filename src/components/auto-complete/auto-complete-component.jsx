@@ -65,7 +65,7 @@ export default function AutoCompleteComponent(props) {
           setOptions([]);
         }}
         onChange={handleInputSelect}
-        isOptionEqualToValue={(option, value) => option.LocalizedName === value.LocalizedName}
+        isOptionEqualToValue={(option, value) => option.Key === value.Key}
         getOptionLabel={(option) => option.LocalizedName}
         options={options}
         loading={isLoading}
