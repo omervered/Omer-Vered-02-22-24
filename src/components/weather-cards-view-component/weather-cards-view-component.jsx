@@ -7,9 +7,10 @@ import FavouriteButtonComponent from "../favourite-button-component/favourite-bu
 import useConnectCardsViewConnector from "./use-connect-cards-view-connector";
 
 import { weatherService } from "../../services/weather.service";
+import { showSuccessMsg } from "../../services/event-bus.service";
+import { getFullWeather } from "../../redux/actions/weather.action";
 
 import * as Styles from "./weather-cards-view-component-styles";
-import { getFullWeather } from "../../redux/actions/weather.action";
 
 export default function WeatherCardsViewComponent(props) {
   const { currentWeather, fullWeather } = props;
@@ -31,9 +32,13 @@ export default function WeatherCardsViewComponent(props) {
   };
 
   const handleIsFavouriteClick = () => {
-    isFavourite
-      ? weatherService.removeFromFavorites({ cityKey: currentCityKey })
-      : weatherService.addToFavorites({ cityKey: currentCityKey, cityName: currentCityName });
+    if (isFavourite) {
+      weatherService.removeFromFavorites({ cityKey: currentCityKey });
+      showSuccessMsg(`${currentCityName} removed from favourites!`);
+    } else {
+      weatherService.addToFavorites({ cityKey: currentCityKey, cityName: currentCityName });
+      showSuccessMsg(`${currentCityName} added to favourites!`);
+    }
     setIsFavourite(!isFavourite);
   };
 

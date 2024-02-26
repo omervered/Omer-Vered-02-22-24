@@ -9,6 +9,7 @@ import { setCityKey, setCityName } from "../../redux/actions/weather.action";
 import useConnectAutoCompleteConnector from "./use-connect-auto-complete-connector";
 
 import * as Styles from "./auto-complete-component-styles";
+import { showSuccessMsg } from "../../services/event-bus.service";
 
 export default function AutoCompleteComponent(props) {
   const { label, placeholder } = props;
@@ -44,6 +45,7 @@ export default function AutoCompleteComponent(props) {
       setCityName(value.LocalizedName);
       await fetchCurrentWeather({ cityKey });
       await fetchFullWeatherForecast({ cityKey, metric: isMetric });
+      showSuccessMsg(`successfully fetched weather for ${value.LocalizedName}!`);
     } catch (error) {
       console.error("Error in handleInputSelect:", error);
     }
