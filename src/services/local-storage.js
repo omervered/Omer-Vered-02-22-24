@@ -2,7 +2,6 @@ export const localStorageService = {
   query,
   get,
   post,
-  put,
   remove,
 };
 
