@@ -4,8 +4,8 @@ export default function TitleComponent(props) {
   const { title, subtitle, titleSize, subtitleSize } = props;
   return (
     <Styles.TitleWrapper>
-      <Styles.Title titleSize={titleSize}>{title}</Styles.Title>
-      {subtitle && <Styles.Subtitle subtitleSize={subtitleSize}>{subtitle}</Styles.Subtitle>}
+      <Styles.Title $titleSize={titleSize}>{title}</Styles.Title>
+      {subtitle && <Styles.Subtitle $subtitleSize={subtitleSize}>{subtitle}</Styles.Subtitle>}
     </Styles.TitleWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import TitleComponent from "../title-component/title-component";
 
@@ -11,7 +11,9 @@ import FavouriteButtonComponent from "../favourite-button-component/favourite-bu
 import WeatherCardViewComponent from "../weather-card-view-component/weather-card-view-component";
 
 export default function WeatherCardsViewComponent(props) {
-  const { currentWeather } = props;
+  const { currentWeather, fullWeather } = props;
+
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const { currentCity } = useConnectCardsViewConnector();
 
@@ -36,6 +38,11 @@ export default function WeatherCardsViewComponent(props) {
   const getSubtitle = () => {
     return `${WeatherText}, ${Temperature.Metric.Value}°C`;
   };
+
+  const handleFavouriteClick = () => {
+    setIsFavourite(!isFavourite);
+  };
+
   const renderCurrentDayCard = () => {
     return (
       <Styles.HeaderWrapper>
@@ -44,18 +51,22 @@ export default function WeatherCardsViewComponent(props) {
         </Styles.IconWrapper>
         <TitleComponent title={currentCity} titleSize="5rem" subtitle={getSubtitle()} />
         <Styles.FavouriteWrapper>
-          <FavouriteButtonComponent />
+          <FavouriteButtonComponent onClick={handleFavouriteClick} isFavourite={isFavourite} />
         </Styles.FavouriteWrapper>
       </Styles.HeaderWrapper>
     );
   };
 
+  const renderFullWeatherForecast = () => {
+    return fullWeather.map((day, index) => {
+      return <WeatherCardViewComponent key={index} day={day} />;
+    });
+  };
+
   return (
     <Styles.WeatherCardsViewWrapper>
       <Styles.CurrentDayCardWrapper>{renderCurrentDayCard()}</Styles.CurrentDayCardWrapper>
-      <Styles.CardViewWrapper>
-        <WeatherCardViewComponent />
-      </Styles.CardViewWrapper>
+      <Styles.CardViewWrapper>{renderFullWeatherForecast()}</Styles.CardViewWrapper>
     </Styles.WeatherCardsViewWrapper>
   );
 }

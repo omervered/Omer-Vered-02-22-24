@@ -13,22 +13,23 @@ export const CurrentDayCardWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  background-color: aqua;
 `;
 
 export const CardViewWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
-  background-color: lightblue;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 `;
 
 export const HeaderWrapper = styled.div`
   width: 100%;
   height: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 10px;
 `;

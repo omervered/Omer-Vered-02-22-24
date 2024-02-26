@@ -3,12 +3,14 @@ import { useState } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
+import * as Styles from "./favourite-button-component-styles";
+
 export default function FavouriteButtonComponent(props) {
-  const [isFavourite, setIsFavourite] = useState(false);
+  const { onClick, isFavourite } = props;
 
-  const handleToggleFavorite = () => {
-    setIsFavourite(!isFavourite);
-  };
-
-  return <div onClick={handleToggleFavorite}>{isFavourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}</div>;
+  return (
+    <Styles.FavouriteButtonWrapper onClick={onClick}>
+      {isFavourite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+    </Styles.FavouriteButtonWrapper>
+  );
 }

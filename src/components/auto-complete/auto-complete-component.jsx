@@ -41,7 +41,7 @@ export default function AutoCompleteComponent(props) {
       const cityKey = value.Key;
       setCityName(value.LocalizedName);
       await fetchCurrentWeather({ cityKey });
-      await fetchFullWeatherForecast({ cityKey });
+      await fetchFullWeatherForecast({ cityKey, metric: "true" });
     } catch (error) {
       console.error("Error in handleInputSelect:", error);
     }
@@ -63,7 +63,7 @@ export default function AutoCompleteComponent(props) {
           setOptions([]);
         }}
         onChange={handleInputSelect}
-        isOptionEqualToValue={(option, value) => option.Key === value.Key}
+        isOptionEqualToValue={(option, value) => option.LocalizedName === value.LocalizedName}
         getOptionLabel={(option) => option.LocalizedName}
         options={options}
         loading={isLoading}
