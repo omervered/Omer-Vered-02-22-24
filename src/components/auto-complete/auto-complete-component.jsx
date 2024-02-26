@@ -13,7 +13,7 @@ import * as Styles from "./auto-complete-component-styles";
 export default function AutoCompleteComponent(props) {
   const { label, placeholder } = props;
 
-  const { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey } =
+  const { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey, isMetric } =
     useConnectAutoCompleteConnector();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ export default function AutoCompleteComponent(props) {
       setCityKey(cityKey);
       setCityName(value.LocalizedName);
       await fetchCurrentWeather({ cityKey });
-      await fetchFullWeatherForecast({ cityKey, metric: "true" });
+      await fetchFullWeatherForecast({ cityKey, metric: isMetric });
     } catch (error) {
       console.error("Error in handleInputSelect:", error);
     }
