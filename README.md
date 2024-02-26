@@ -22,6 +22,7 @@
 - toggle dark/light mode
 - adding weather forcast to favourites view
 - direct url for more detailed forecast
+- event bus showing user notifications 
 
 ##### Important Notice: 
 - Accuweather API limits fetching calls, after few tries it can be blocked.
