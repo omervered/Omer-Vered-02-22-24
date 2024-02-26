@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
+
 import { getFullWeather, getWeather } from "../../redux/actions/weather.action";
 import HttpService from "../../services/http-service";
 
-const API_KEY = "GbouZoRmjGkIOk6VgGTYAlFOIMrLp8eA";
+const API_KEY = "Kl7aARxfBSfbw2M9PUqjnAy3zFb1SpBb";
 
-export default function useConnectAutoCompleteComponent() {
+export default function useConnectAutoCompleteConnector() {
   const fetchCityAutoComplete = async ({ searchString }) => {
     try {
       const response = await HttpService.get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete`, {
@@ -35,5 +37,7 @@ export default function useConnectAutoCompleteComponent() {
     }
   };
 
-  return { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast };
+  const currentCityKey = useSelector((storeState) => storeState.weatherModule.cityKey);
+
+  return { fetchCityAutoComplete, fetchCurrentWeather, fetchFullWeatherForecast, currentCityKey };
 }

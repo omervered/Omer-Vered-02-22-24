@@ -7,7 +7,6 @@ import WeatherCardsViewComponent from "../../components/weather-cards-view-compo
 import useConnectHomePageConnector from "./use-connect-home-page-connector";
 
 import * as Styles from "./home-page-styles";
-import { useEffect } from "react";
 
 export default function HomePage() {
   const { currentWeather, fullWeather } = useConnectHomePageConnector();

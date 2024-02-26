@@ -1,34 +1,27 @@
 import { useEffect, useState } from "react";
 
 import TitleComponent from "../title-component/title-component";
+import WeatherCardViewComponent from "../weather-card-view-component/weather-card-view-component";
+import FavouriteButtonComponent from "../favourite-button-component/favourite-button-component";
 
 import useConnectCardsViewConnector from "./use-connect-cards-view-connector";
 
-import { getWeekday } from "../../utils/utils";
+import { weatherService } from "../../services/weather.service";
 
 import * as Styles from "./weather-cards-view-component-styles";
-import FavouriteButtonComponent from "../favourite-button-component/favourite-button-component";
-import WeatherCardViewComponent from "../weather-card-view-component/weather-card-view-component";
 
 export default function WeatherCardsViewComponent(props) {
   const { currentWeather, fullWeather } = props;
 
   const [isFavourite, setIsFavourite] = useState(false);
 
-  const { currentCity } = useConnectCardsViewConnector();
+  const { currentCityName, currentCityKey } = useConnectCardsViewConnector();
 
-  const {
-    LocalObservationDateTime: timestamp,
-    WeatherText,
-    WeatherIcon,
-    MobileLink,
-    Link,
-    Temperature,
-  } = currentWeather;
+  const { LocalObservationDateTime: timestamp, WeatherText, WeatherIcon, Temperature } = currentWeather;
 
   useEffect(() => {
-    const currDay = getWeekday({ timestamp });
-  });
+    setIsFavourite(weatherService.isCityInFavorites({ cityKey: currentCityKey }));
+  }, [currentCityKey]);
 
   const getIconPath = () => {
     const iconUrl = `src/icons/${WeatherIcon}.png`;
@@ -39,7 +32,10 @@ export default function WeatherCardsViewComponent(props) {
     return `${WeatherText}, ${Temperature.Metric.Value}°C`;
   };
 
-  const handleFavouriteClick = () => {
+  const handleIsFavouriteClick = () => {
+    isFavourite
+      ? weatherService.removeFromFavorites({ cityKey: currentCityKey })
+      : weatherService.addToFavorites({ cityKey: currentCityKey });
     setIsFavourite(!isFavourite);
   };
 
@@ -49,9 +45,9 @@ export default function WeatherCardsViewComponent(props) {
         <Styles.IconWrapper>
           <Styles.Icon src={getIconPath()} alt="Weather Icon" />
         </Styles.IconWrapper>
-        <TitleComponent title={currentCity} titleSize="5rem" subtitle={getSubtitle()} />
+        <TitleComponent title={currentCityName} titleSize="5rem" subtitle={getSubtitle()} />
         <Styles.FavouriteWrapper>
-          <FavouriteButtonComponent onClick={handleFavouriteClick} isFavourite={isFavourite} />
+          <FavouriteButtonComponent onClick={handleIsFavouriteClick} isFavourite={isFavourite} />
         </Styles.FavouriteWrapper>
       </Styles.HeaderWrapper>
     );
