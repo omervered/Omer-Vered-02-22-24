@@ -4,18 +4,20 @@ import { localStorageService } from "./local-storage";
 const CURR_WEATHER_BASE_URL = "http://dataservice.accuweather.com/currentconditions/v1";
 const FIVE_DAY_FORECAST_BASE_URL = "http://dataservice.accuweather.com/forecasts/v1/daily/5day";
 
+const API_KEY = "bPaezHAnKBQRSmfxbCdNiYk9bc8Xa4HE";
+
 const STORAGE_KEY = "weatherDB";
 
 function getWeather({ cityKey }) {
   const url = `${CURR_WEATHER_BASE_URL}/${cityKey}`;
   return HttpService.get(`${CURR_WEATHER_BASE_URL}/${cityKey}`, {
-    apikey: "4F5aERCEIyBnEAXBGRsl9L7T8GPTTyJs",
+    apikey: API_KEY,
   });
 }
 
 function getFullWeather({ cityKey, metric }) {
   return HttpService.get(`${FIVE_DAY_FORECAST_BASE_URL}/${cityKey}`, {
-    apikey: "4F5aERCEIyBnEAXBGRsl9L7T8GPTTyJs",
+    apikey: API_KEY,
     metric,
   });
 }
@@ -37,6 +39,13 @@ function isCityInFavorites({ cityKey }) {
   return cities.some((city) => city.cityKey === cityKey);
 }
 
+function getGeolocation(latitude, longitude) {
+  return HttpService.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search", {
+    apikey: API_KEY,
+    q: `${latitude},${longitude}`,
+  });
+}
+
 export const weatherService = {
   getWeather,
   getFullWeather,
@@ -44,4 +53,5 @@ export const weatherService = {
   removeFromFavorites,
   isCityInFavorites,
   loadFavorites,
+  getGeolocation,
 };

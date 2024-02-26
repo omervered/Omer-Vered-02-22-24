@@ -5,6 +5,7 @@ import FavouriteCardViewComponent from "../favourite-card-view-component/favouri
 import { weatherService } from "../../services/weather.service";
 
 import * as Styles from "./favourite-cards-view-component-styles";
+import { CircularProgress } from "@mui/material";
 
 export default function FavouriteCardsViewComponent(props) {
   const { favourites } = props;
@@ -35,7 +36,7 @@ export default function FavouriteCardsViewComponent(props) {
     }
   }, [favourites]);
 
-  const renderFavouriteWeather = () => {
+  const renderFavourites = () => {
     return favouritesWeather.map((weather, index) => {
       return (
         <Styles.FavouriteCardViewWrapper key={index}>
@@ -45,5 +46,9 @@ export default function FavouriteCardsViewComponent(props) {
     });
   };
 
-  return <Styles.FavouriteCardsViewWrapper>{renderFavouriteWeather()}</Styles.FavouriteCardsViewWrapper>;
+  return (
+    <Styles.FavouriteCardsViewWrapper>
+      {favouritesWeather ? renderFavourites() : <CircularProgress color="inherit" size={20} />}
+    </Styles.FavouriteCardsViewWrapper>
+  );
 }
