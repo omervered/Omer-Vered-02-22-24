@@ -43,3 +43,7 @@ export const Icon = styled.img`
   width: 70%;
   height: 70%;
 `;
+
+export const Link = styled.a`
+  text-decoration: none;
+`;

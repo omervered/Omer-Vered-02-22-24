@@ -26,9 +26,9 @@ export default function useConnectAutoCompleteComponent() {
     }
   };
 
-  const fetchFullWeatherForecast = async ({ cityKey }) => {
+  const fetchFullWeatherForecast = async ({ cityKey, metric }) => {
     try {
-      await getFullWeather({ cityKey });
+      await getFullWeather({ cityKey, metric });
     } catch (error) {
       console.error("Error fetching full weather forecast:", error);
       throw error;

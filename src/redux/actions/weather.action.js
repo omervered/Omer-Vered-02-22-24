@@ -13,9 +13,9 @@ export async function getWeather({ cityKey }) {
   }
 }
 
-export async function getFullWeather({ cityKey }) {
+export async function getFullWeather({ cityKey, metric }) {
   try {
-    const response = await weatherService.getFullWeather({ cityKey });
+    const response = await weatherService.getFullWeather({ cityKey, metric });
     store.dispatch({ type: SET_FULL_WEATHER, payload: response.data.DailyForecasts });
   } catch (error) {
     console.error("Error fetching full weather forecast:", error);

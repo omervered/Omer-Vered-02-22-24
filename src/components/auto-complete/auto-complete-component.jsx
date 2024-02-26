@@ -41,7 +41,7 @@ export default function AutoCompleteComponent(props) {
       const cityKey = value.Key;
       setCityName(value.LocalizedName);
       await fetchCurrentWeather({ cityKey });
-      await fetchFullWeatherForecast({ cityKey });
+      await fetchFullWeatherForecast({ cityKey, metric: "true" });
     } catch (error) {
       console.error("Error in handleInputSelect:", error);
     }

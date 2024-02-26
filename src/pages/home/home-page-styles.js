@@ -12,9 +12,11 @@ export const HomePage = styled.div`
 export const HomePageContainer = styled.div`
   width: 100%;
   max-width: 1200px;
+  min-height: 563px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 50px 25px;
   padding: 50px;
   background-color: ${colors["alice-blue"]};
