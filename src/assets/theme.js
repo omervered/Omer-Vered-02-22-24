@@ -1,11 +1,17 @@
+import colors from "../constants/colors";
+
 export const lightTheme = {
-  body: "#FFF",
+  body: colors["white-smoke"],
   text: "#000",
   h1h2: "#333",
+  headerBackground: colors["jordy-blue"],
+  containerBackground: colors["alice-blue"],
 };
 
 export const darkTheme = {
-  body: "#121212",
-  text: "#E0E0E0",
+  body: colors["navy"],
+  text: colors["jordy-blue"],
   h1h2: "#CCC",
+  headerBackground: colors["dark-blue-gray"],
+  containerBackground: colors["dark-blue-gray"],
 };
