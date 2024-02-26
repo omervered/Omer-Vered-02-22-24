@@ -4,6 +4,8 @@ import FavouriteCardViewComponent from "../favourite-card-view-component/favouri
 
 import { weatherService } from "../../services/weather.service";
 
+import * as Styles from "./favourite-cards-view-component-styles";
+
 export default function FavouriteCardsViewComponent(props) {
   const { favourites } = props;
 
@@ -12,10 +14,17 @@ export default function FavouriteCardsViewComponent(props) {
   useEffect(() => {
     const fetchWeatherData = async () => {
       try {
-        const weatherPromises = await favourites.map((cityKey) => weatherService.getWeather({ cityKey }));
-        const weatherResults = await Promise.all(weatherPromises);
+        const weatherPromises = favourites.map((favourite) => {
+          return weatherService.getWeather({ cityKey: favourite.cityKey }).then((weatherResult) => {
+            return {
+              ...weatherResult,
+              cityName: favourite.cityName,
+            };
+          });
+        });
 
-        setFavouritesWeather(weatherResults);
+        const enrichedWeatherResults = await Promise.all(weatherPromises);
+        setFavouritesWeather(enrichedWeatherResults);
       } catch (error) {
         console.error("Error fetching weather data for favourites:", error);
       }
@@ -26,11 +35,15 @@ export default function FavouriteCardsViewComponent(props) {
     }
   }, [favourites]);
 
-  return (
-    <div>
-      {favouritesWeather.map((weather, index) => {
-        return <FavouriteCardViewComponent key={index} weather={weather} />;
-      })}
-    </div>
-  );
+  const renderFavouriteWeather = () => {
+    return favouritesWeather.map((weather, index) => {
+      return (
+        <Styles.FavouriteCardViewWrapper key={index}>
+          <FavouriteCardViewComponent weather={weather} />
+        </Styles.FavouriteCardViewWrapper>
+      );
+    });
+  };
+
+  return <Styles.FavouriteCardsViewWrapper>{renderFavouriteWeather()}</Styles.FavouriteCardsViewWrapper>;
 }
