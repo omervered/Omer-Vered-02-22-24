@@ -8,6 +8,7 @@ import { useAppHeaderConnector } from "./use-app-header-connector";
 
 import * as Styles from "./app-header-component-styles";
 import { showSuccessMsg } from "../../services/event-bus.service";
+import { useEffect } from "react";
 
 export default function AppHeaderComponent() {
   const { isDarkMode, isMetric } = useAppHeaderConnector();
@@ -21,6 +22,13 @@ export default function AppHeaderComponent() {
     setIsMetric(!isMetric);
     showSuccessMsg(`Switched to ${isMetric ? "Imperial" : "Metric"} units!`);
   };
+
+  useEffect(() => {
+    const currentTime = new Date().getHours();
+    const isNight = currentTime >= 17 || currentTime < 6;
+    setTheme(isNight);
+    showSuccessMsg(isDarkMode ? "Good Morning!" : "Good Evening!");
+  }, []);
 
   return (
     <Styles.AppHeader>

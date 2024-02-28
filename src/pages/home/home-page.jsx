@@ -6,10 +6,9 @@ import AutoCompleteComponent from "../../components/auto-complete/auto-complete-
 import WeatherCardsViewComponent from "../../components/weather-cards-view-component/weather-cards-view-component";
 
 import useConnectHomePageConnector from "./use-connect-home-page-connector";
+import { getGeolocation } from "../../redux/actions/weather.action";
 
 import * as Styles from "./home-page-styles";
-import { getGeolocation } from "../../redux/actions/weather.action";
-import { useSelector } from "react-redux";
 
 export default function HomePage() {
   const { currentWeather, fullWeather } = useConnectHomePageConnector();
