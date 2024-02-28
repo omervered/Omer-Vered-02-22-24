@@ -1,5 +1,8 @@
 # The Weather Frog App
 
+##### update 28/02/24
+- new feature was added - dark/light mode according to the time of the say - including welcome message 
+
 https://thunderous-praline-5539ae.netlify.app
 
 ### This is home assignment for Abra 
