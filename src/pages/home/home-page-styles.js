@@ -24,3 +24,13 @@ export const HomePageContainer = styled.div`
   border: 2px solid ${colors["alice-blue-dark"]};
   border-radius: 10px;
 `;
+
+export const NoGeolocationAllowed = styled.h1`
+  color: red;
+  margin-bottom: 20px;
+`;
+
+export const NoGeolocationAllowedMessage = styled.p`
+  color: red;
+  margin-bottom: 20px;
+`;
