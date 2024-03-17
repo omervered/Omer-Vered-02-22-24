@@ -6,18 +6,18 @@ export const localStorageService = {
 };
 
 function query(entityType) {
-  var entities = JSON.parse(localStorage.getItem(entityType)) || [];
+  let entities = JSON.parse(localStorage.getItem(entityType)) || [];
   return entities;
 }
 
 function get(entityType, entityId) {
-  var entities = query(entityType);
-  var entity = entities.find((entity) => entity._id === entityId);
+  let entities = query(entityType);
+  let entity = entities.find((entity) => entity._id === entityId);
   return entity;
 }
 
 function post(entityType, newEntity) {
-  var entities = query(entityType);
+  let entities = query(entityType);
 
   entities.push(newEntity);
   _save(entityType, entities);
@@ -26,9 +26,9 @@ function post(entityType, newEntity) {
 }
 
 function remove(entityType, cityKey) {
-  var entities = query(entityType);
+  let entities = query(entityType);
 
-  var idx = entities.findIndex((entity) => entity.cityKey === cityKey);
+  let idx = entities.findIndex((entity) => entity.cityKey === cityKey);
   if (idx !== -1) {
     entities.splice(idx, 1);
 
