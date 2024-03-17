@@ -27,7 +27,7 @@ export default function AppHeaderComponent() {
     const currentTime = new Date().getHours();
     const isNight = currentTime >= 17 || currentTime < 6;
     setTheme(isNight);
-    showSuccessMsg(isDarkMode ? "Good Morning!" : "Good Evening!");
+    showSuccessMsg(isDarkMode ? "Good Evening!" : "Good Morning!");
   }, []);
 
   return (

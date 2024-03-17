@@ -17,8 +17,6 @@ export default function WeatherCardViewComponent(props) {
   const isMobile = useMediaQuery("(max-width:600px)");
   const infoLink = isMobile ? MobileLink : Link;
 
-  const bull = <Box component="span" sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}></Box>;
-
   const card = (
     <Styles.CardWrapper>
       <CardContent style={{ minHeight: "250px" }}>

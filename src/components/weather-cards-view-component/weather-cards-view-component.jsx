@@ -8,7 +8,6 @@ import useConnectCardsViewConnector from "./use-connect-cards-view-connector";
 
 import { weatherService } from "../../services/weather.service";
 import { showSuccessMsg } from "../../services/event-bus.service";
-import { getFullWeather } from "../../redux/actions/weather.action";
 
 import * as Styles from "./weather-cards-view-component-styles";
 
@@ -22,7 +21,6 @@ export default function WeatherCardsViewComponent(props) {
   const { LocalObservationDateTime: timestamp, WeatherText, WeatherIcon, Temperature } = currentWeather;
 
   useEffect(() => {
-    getFullWeather({ cityKey: currentCityKey, metric: isMetric });
     setIsFavourite(weatherService.isCityInFavorites({ cityKey: currentCityKey }));
   }, [currentCityKey, isMetric]);
 
