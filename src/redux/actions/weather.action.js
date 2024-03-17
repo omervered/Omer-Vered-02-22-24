@@ -7,6 +7,7 @@ import {
   SET_WEATHER,
   SET_GEOLOCATION,
   SET_IS_METRIC,
+  SET_GEOLOCATION_IS_ALLOWED,
 } from "../reducers/weather.reducer";
 
 import { weatherService } from "../../services/weather.service";
@@ -15,6 +16,7 @@ export async function getWeather({ cityKey }) {
   try {
     const response = await weatherService.getWeather({ cityKey });
     store.dispatch({ type: SET_WEATHER, payload: response.data[0] });
+    store.dispatch({ type: SET_GEOLOCATION_IS_ALLOWED, payload: true });
   } catch (error) {
     console.error("Error fetching weather:", error);
     throw error;
@@ -32,11 +34,6 @@ export async function getFullWeather({ cityKey, metric }) {
 }
 
 export async function getGeolocation() {
-  if (!navigator.geolocation) {
-    console.error("Geolocation is not supported by your browser.");
-    return;
-  }
-
   navigator.geolocation.getCurrentPosition(
     async (position) => {
       try {
@@ -58,6 +55,7 @@ export async function getGeolocation() {
     },
     (error) => {
       console.error("Geolocation error:", error);
+      store.dispatch({ type: SET_GEOLOCATION_IS_ALLOWED, payload: false });
     }
   );
 }

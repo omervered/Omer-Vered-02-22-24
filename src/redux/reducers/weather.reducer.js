@@ -5,6 +5,7 @@ export const SET_CITY_KEY = "SET_CITY_KEY";
 export const REMOVE_CITY_KEY = "REMOVE_CITY_KEY";
 export const SET_GEOLOCATION = "SET_GEOLOCATION";
 export const SET_IS_METRIC = "SET_IS_METRIC";
+export const SET_GEOLOCATION_IS_ALLOWED = "SET_GEOLOCATION_IS_ALLOWED";
 
 const initialState = {
   currentWeather: null,
@@ -13,6 +14,7 @@ const initialState = {
   cityKey: null,
   geolocation: null,
   isMetric: true,
+  geolocationIsAllowed: true,
 };
 
 export function weatherReducer(state = initialState, action = {}) {
@@ -37,6 +39,9 @@ export function weatherReducer(state = initialState, action = {}) {
 
     case SET_IS_METRIC:
       return { ...state, isMetric: action.payload };
+
+    case SET_GEOLOCATION_IS_ALLOWED:
+      return { ...state, geolocationIsAllowed: action.payload };
 
     default:
       return state;
