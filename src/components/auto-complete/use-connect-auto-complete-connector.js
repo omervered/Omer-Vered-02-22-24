@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { getFullWeather, getWeather } from "../../redux/actions/weather.action";
 import HttpService from "../../services/http-service";
 
-const API_KEY = "BCLYij4hkaAgRvujSShQJ4HAIEWX7MCI";
+const API_KEY = "5GihREl8MDQobGqCJK5UbyzVGQ1N91VO";
 
 export default function useConnectAutoCompleteConnector() {
   const fetchCityAutoComplete = async ({ searchString }) => {
